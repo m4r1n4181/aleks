@@ -1,0 +1,36 @@
+﻿<Window x:Class="BookingApp.View.HotelSearchView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HotelSearchView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Search panel -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Pretraga po:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="SearchCriteriaComboBox" Width="150" Margin="5">
+                <ComboBoxItem Content="Šifra"/>
+                <ComboBoxItem Content="Ime"/>
+                <ComboBoxItem Content="Godina izgradnje"/>
+                <ComboBoxItem Content="Broj zvezdica"/>
+                <ComboBoxItem Content="Apartmani"/>
+            </ComboBox>
+            <TextBox x:Name="SearchTextBox" Width="200" Margin="5"/>
+            <Button Content="Pretraži" Command="{Binding SearchCommand}" Margin="5"/>
+        </StackPanel>
+
+        <!-- Hotels table -->
+        <DataGrid Grid.Row="1" ItemsSource ="{Binding Hotels}" x:Name="HotelsDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Šifra" Binding="{Binding Sifra}"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}"/>
+                <DataGridTextColumn Header="Godina izgradnje" Binding="{Binding GodinaIzgradnje}"/>
+                <DataGridTextColumn Header="Broj zvezdica" Binding="{Binding BrojZvezdica}"/>
+                <DataGridTextColumn Header="Broj zvezdica" Binding="{Binding JmbgVlasnika}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
